@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'provider',
     'bases',
+    'inventario',
 ]
 
 MIDDLEWARE = [
@@ -78,11 +79,11 @@ WSGI_APPLICATION = 'mystore.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-	    'NAME': 'mystore',
+	    'NAME': 'mystore_2',
         'USER': 'postgres',
-        'PASSWORD': 'jago12345', #'j@go1983',
+        'PASSWORD': 'j@go1983', #'jago12345',
         'HOST': 'localhost',
-        'PORT': '5432',#'5434',
+        'PORT': '5434',#'5432',
     }
 }
 
@@ -126,3 +127,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/login/'
