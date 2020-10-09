@@ -1,17 +1,33 @@
 from django.db import models
+from bases.models import ClaseModelo
+
 #from ckeditor.fields import RichTextField
+class Proveedor(ClaseModelo):
+    descripcion = models.CharField(max_length=100,
+        unique=True
+    )
+    direccion = models.CharField(
+        max_length=250,
+        null=True, blank=True
+    )
+    contacto = models.CharField(
+        max_length=100
+    )
+    telefono = models.CharField(
+        max_length=100,
+        null=True, blank=True
+    )
+    email = models.CharField(
+        max_length=250,
+        null=True, blank=True
+    )
 
-
-class Empresa(models.Model):
-    name = models.CharField(max_length=200)
-    date_created = models.DateTimeField('date created')
-    status = models.BooleanField('Status',default=True)
     def __str__(self):
-        return self.name
+        return '{}'.format(self.descripcion)
+    def save(self):
+        self.descripcion = self.descripcion.upper()
+        super(Proveedor, self).save()
+    
+    class Meta:
+        verbose_name_plural = 'Proveedores'
 
-
-'''class Factura(models.Model):
-    empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE)
-     = models.CharField(max_length=200)
-    votes = models.IntegerField(default=0)'''
-# Create your models here.
